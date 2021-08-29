@@ -6595,8 +6595,8 @@
     <emu-clause id="sec-privatemethodoraccessoradd" type="abstract operation">
       <h1>
         PrivateMethodOrAccessorAdd (
-          _method_: a PrivateElement,
           _O_: an Object,
+          _method_: a PrivateElement,
         )
       </h1>
       <dl class="header">
@@ -6691,7 +6691,7 @@
       <emu-alg>
         1. Let _methods_ be the value of _constructor_.[[PrivateMethods]].
         1. For each PrivateElement _method_ of _methods_, do
-          1. Perform ? PrivateMethodOrAccessorAdd(_method_, _O_).
+          1. Perform ? PrivateMethodOrAccessorAdd(_O_, _method_).
         1. Let _fields_ be the value of _constructor_.[[Fields]].
         1. For each element _fieldRecord_ of _fields_, do
           1. Perform ? DefineField(_O_, _fieldRecord_).
@@ -24060,7 +24060,7 @@
         1. Set _F_.[[PrivateMethods]] to _instancePrivateMethods_.
         1. Set _F_.[[Fields]] to _instanceFields_.
         1. For each PrivateElement _method_ of _staticPrivateMethods_, do
-          1. Perform ! PrivateMethodOrAccessorAdd(_method_, _F_).
+          1. Perform ! PrivateMethodOrAccessorAdd(_F_, _method_).
         1. For each element _fieldRecord_ of _staticFields_, do
           1. Let _result_ be DefineField(_F_, _fieldRecord_).
           1. If _result_ is an abrupt completion, then
